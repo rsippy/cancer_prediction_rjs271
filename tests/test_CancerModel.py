@@ -21,7 +21,3 @@ class TestCancerModel(unittest.TestCase):
         target = 0
         diagnosis = model.target_to_diagnosis(target)
         self.assertEqual(diagnosis, 'Benign')
-
-        
-if _name__ == '__main__':
-    unittest.main()
