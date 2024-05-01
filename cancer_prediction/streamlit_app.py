@@ -1,7 +1,7 @@
 import os
-import pickle
+# import pickle
 
-import numpy as np
+# import numpy as np
 import pandas as pd
 import streamlit as st
 
@@ -62,8 +62,8 @@ app_mode = st.sidebar.selectbox(
 
 if app_mode == "Home":
     st.write(
-        "Welcome to the Cancer Diagnosis Prediction Application. Use the sidebar to navigate through the application."
-    )
+        "Welcome to the Cancer Diagnosis Prediction Application." 
+        "Use the sidebar to navigate through the application.")
 
 elif app_mode == "Train a new model":
     st.header("Train a new model")
@@ -115,11 +115,11 @@ if (
 
         # Dynamically generate input fields for each feature
         for feature in feature_names:
-            # You might want to customize the `step` parameter based on the feature's data type and expected range
+            # Might want to customize `step` parameter based on data type and range
             input_data[feature] = st.number_input(f"Enter {feature}:", step=0.01)
 
         if st.button("Predict"):
-            # Prepare the data for prediction (ensure it matches the model's expected input format)
+            # Prepare data for prediction (match expected input format)
             input_df = pd.DataFrame([input_data])
 
             # Perform the prediction
