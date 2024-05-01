@@ -1,8 +1,8 @@
 import pickle
 import warnings
 
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.linear_model import LogisticRegression
