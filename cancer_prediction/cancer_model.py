@@ -1,7 +1,6 @@
 import pickle
 import warnings
 
-# import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
@@ -86,7 +85,7 @@ class CancerModel:
 
         Returns:
             str: The diagnosis (Malignant or Benign)
-            
+
         return "Malignant" if target == 0 else "Benign"
 
     def diagnosis_to_target(self, diagnosis: str) -> int:

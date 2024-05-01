@@ -3,8 +3,6 @@ import sys
 import typer
 from streamlit.web import cli as stcli
 
-from cancer_prediction import streamlit_app
-
 app = typer.Typer()
 
 
