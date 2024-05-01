@@ -53,6 +53,7 @@ exclude = '''
     | buck-out
     | build
     | dist
+    | cancer_prediction/streamlit_app.py
   )/
 '''
 
