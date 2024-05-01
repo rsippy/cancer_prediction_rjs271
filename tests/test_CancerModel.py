@@ -2,25 +2,28 @@ import unittest
 
 from cancer_prediction.cancer_model import CancerModel
 
+
 class TestCancerModel(unittest.TestCase):
     def diagnosis_to_target(self):
         model = CancerModel()
-        diagnosis = 'Malignant'
+        diagnosis = "Malignant"
         target = model.diagnosis_to_target(diagnosis)
         self.assertEqual(target, 0)
 
-        diagnosis = 'Benign'
+        diagnosis = "Benign"
         target = model.diagnosis_to_target(diagnosis)
         self.assertEqual(target, 1)
+
     def target_to_diagnosis(self):
         model = CancerModel()
         target = 1
         diagnosis = model.target_to_diagnosis(target)
-        self.assertEqual(diagnosis, 'Malignant')
+        self.assertEqual(diagnosis, "Malignant")
 
         target = 0
         diagnosis = model.target_to_diagnosis(target)
-        self.assertEqual(diagnosis, 'Benign')
-        
-if __name__ == '__main__':
+        self.assertEqual(diagnosis, "Benign")
+
+
+if __name__ == "__main__":
     unittest.main()
