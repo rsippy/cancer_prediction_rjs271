@@ -104,7 +104,7 @@ if (
             st.write("Accuracy:", accuracy)  # type: ignore
 
     elif app_mode == "Manual data entry for prediction":
-        st.header("Manual data entry for prediction")  # type: ignore
+        st.header("Manual data entry for prediction") 
 
         # Define your features names here based on the model's training dataset
         feature_names = model.feature_names  # Replace these with actual feature names
