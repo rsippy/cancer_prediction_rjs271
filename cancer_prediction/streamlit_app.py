@@ -5,7 +5,7 @@ import streamlit as st
 
 from cancer_prediction.cancer_model import CancerModel
 
-st.set_page_config(page_title = "Cancer Diagnosis Prediction", layout ="wide") # type: ignore
+st.set_page_config(page_title="Cancer Diagnosis Prediction", layout="wide")  # type: ignore
 
 MODELS_DIR = "models"
 
@@ -15,7 +15,7 @@ def list_saved_models(directory):
     return [file for file in os.listdir(directory) if file.endswith(".pkl")]
 
 
-@st.cache_resource # type: ignore
+@st.cache_resource  # type: ignore
 def load_model(path="cancer_model.pkl"):
     model = CancerModel()
     model.load(path)
@@ -45,10 +45,10 @@ def train_and_save_model(
     return model
 
 
-st.title("Cancer Diagnosis Prediction") # type: ignore
+st.title("Cancer Diagnosis Prediction")  # type: ignore
 
 # Sidebar for navigation
-app_mode = st.sidebar.selectbox( # type: ignore
+app_mode = st.sidebar.selectbox(  # type: ignore
     "Choose an option",
     [
         "Home",
@@ -59,40 +59,40 @@ app_mode = st.sidebar.selectbox( # type: ignore
 )
 
 if app_mode == "Home":
-    st.write( # type: ignore
+    st.write(  # type: ignore
         "Welcome to the Cancer Diagnosis Prediction Application."
         "Use the sidebar to navigate through the application."
     )
 
 elif app_mode == "Train a new model":
-    st.header("Train a new model") # type: ignore
-    uploaded_file = st.file_uploader("Upload your dataset (CSV format)", type="csv") # type: ignore
-    model_name = st.text_input( # type: ignore
+    st.header("Train a new model")  # type: ignore
+    uploaded_file = st.file_uploader("Upload your dataset (CSV format)", type="csv")  # type: ignore
+    model_name = st.text_input(  # type: ignore
         "Enter a name for your model (without extension)", value="cancer_model"
     )
 
     if uploaded_file is not None and model_name:
         data = pd.read_csv(uploaded_file)
-        if st.button("Train Model"): # type: ignore
+        if st.button("Train Model"):  # type: ignore
             # Append .pkl extension if not provided
             if not model_name.endswith(".pkl"):
                 model_name += ".pkl"
             train_and_save_model(data, model_name)
-            st.success(f'Model "{model_name}" trained and saved successfully.') # type: ignore
+            st.success(f'Model "{model_name}" trained and saved successfully.')  # type: ignore
 
 
 if (
     app_mode == "Load model and predict"
     or app_mode == "Manual data entry for prediction"
 ):
-    st.header("Select a model for prediction") # type: ignore
+    st.header("Select a model for prediction")  # type: ignore
     model_files = list_saved_models(MODELS_DIR)
-    selected_model_file = st.selectbox("Select a model file", model_files) # type: ignore
+    selected_model_file = st.selectbox("Select a model file", model_files)  # type: ignore
     path = os.path.join(MODELS_DIR, selected_model_file)
     model = load_model(path)
 
     if app_mode == "Load model and predict":
-        uploaded_file = st.file_uploader( # type: ignore
+        uploaded_file = st.file_uploader(  # type: ignore
             "Upload your dataset for prediction (CSV format)", type="csv"
         )
         if uploaded_file is not None:
@@ -100,11 +100,11 @@ if (
             predictions, accuracy = model.predict(
                 test_data.drop("target", axis=1)
             ), model.accuracy(test_data.drop("target", axis=1), test_data["target"])
-            st.write("Predictions:", predictions) # type: ignore
-            st.write("Accuracy:", accuracy) # type: ignore
+            st.write("Predictions:", predictions)  # type: ignore
+            st.write("Accuracy:", accuracy)  # type: ignore
 
     elif app_mode == "Manual data entry for prediction":
-        st.header("Manual data entry for prediction") # type: ignore
+        st.header("Manual data entry for prediction")  # type: ignore
 
         # Define your features names here based on the model's training dataset
         feature_names = model.feature_names  # Replace these with actual feature names
@@ -115,9 +115,9 @@ if (
         # Dynamically generate input fields for each feature
         for feature in feature_names:
             # Might want to customize `step` parameter based on data type and range
-            input_data[feature] = st.number_input(f"Enter {feature}:", step=0.01) # type: ignore
+            input_data[feature] = st.number_input(f"Enter {feature}:", step=0.01)  # type: ignore
 
-        if st.button("Predict"): # type: ignore
+        if st.button("Predict"):  # type: ignore
             # Prepare data for prediction (match expected input format)
             input_df = pd.DataFrame([input_data])
 
@@ -125,6 +125,6 @@ if (
             prediction = model.predict(input_df)
 
             # Display the prediction result
-            st.write( # type: ignore
+            st.write(  # type: ignore
                 f"Prediction: {prediction[0][0]} with confidence: {prediction[0][1]}"
             )
