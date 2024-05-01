@@ -12,7 +12,7 @@ class TestCancerModel(unittest.TestCase):
         diagnosis = 'Benign'
         target = model.diagnosis_to_target(diagnosis)
         self.assertEqual(target, 1)
-    def target_to_diagnosis(self)
+    def target_to_diagnosis(self):
         model = CancerModel()
         target = 1
         diagnosis = model.target_to_diagnosis(target)
