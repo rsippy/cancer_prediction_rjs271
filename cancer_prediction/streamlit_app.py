@@ -1,11 +1,14 @@
 import os
-# import pickle
 
 # import numpy as np
 import pandas as pd
 import streamlit as st
 
 from cancer_prediction.cancer_model import CancerModel
+
+# import pickle
+
+
 
 st.set_page_config(page_title="Cancer Diagnosis Prediction", layout="wide")
 
@@ -62,8 +65,9 @@ app_mode = st.sidebar.selectbox(
 
 if app_mode == "Home":
     st.write(
-        "Welcome to the Cancer Diagnosis Prediction Application." 
-        "Use the sidebar to navigate through the application.")
+        "Welcome to the Cancer Diagnosis Prediction Application."
+        "Use the sidebar to navigate through the application."
+    )
 
 elif app_mode == "Train a new model":
     st.header("Train a new model")
