@@ -85,7 +85,7 @@ class CancerModel:
 
         Returns:
             str: The diagnosis (Malignant or Benign)
-
+        """
         return "Malignant" if target == 0 else "Benign"
 
     def diagnosis_to_target(self, diagnosis: str) -> int:
